@@ -10,10 +10,10 @@ exports.user_signup = (req, res, next) => {
 };
 
 exports.user_login = (req, res, next) => {
-  res.status(200).json({ msg: "user_login works" })
+  res.status(200).json({ msg: "user_login working" })
 };
 
 exports.user_delete = (req, res, next) => {
-  res.status(200).json({ msg: "user_delete works" })
+  res.status(200).json({ msg: "user_delete working" })
 
 };
