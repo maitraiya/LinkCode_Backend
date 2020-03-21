@@ -3,8 +3,10 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require('path');
 
-const userRoutes = require('./api/routes/user');
+//const userRoutes = require('./api/routes/user');
+const contactUsRoutes = require('./api/routes/contact');
 
 mongoose.connect("mongodb+srv://node-shop:node-shop@node-shop-rest-slxeu.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true });
 
@@ -12,6 +14,7 @@ mongoose.Promise = global.Promise;
 
 app.use(morgan("dev"));
 app.use('/uploads', express.static('uploads'));
+app.use(express.static('../client/dist/client'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -28,8 +31,13 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', function(req,res) {
+  res.sendFile('index.html', { root: '../client/dist/client'});
+})
+
 // Routes which should handle requests
-app.use("/user", userRoutes);
+//app.use("/api/user", userRoutes);
+app.use("/api/contact", contactUsRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
