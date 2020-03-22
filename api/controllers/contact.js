@@ -7,12 +7,13 @@ exports.user_submit = async (req, res, next) => {
 
   console.log(req.body);
   //res.status(200).json({ msg: "user_signup works" })
-  if(req.body.firstName !== '' || req.body.lastName !== '' || req.body.email !== '' || req.body.subject !== '')
+  //req.body.lastName !== '' ||
+  if(req.body.firstName !== '' ||  req.body.email !== '' || req.body.subject !== '')
   {
     const ContactUsData = new ContactUs({
       _id: new mongoose.Types.ObjectId(),
       firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      //lastName: req.body.lastName,
       email: req.body.email,
       subject: req.body.subject,
     });

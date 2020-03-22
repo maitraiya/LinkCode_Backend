@@ -1,5 +1,4 @@
 {
-  "name": "rest-shop",
   "version": "1.0.0",
   "description": "A Node.js RESTful API Tutorial Project (Build a simple shop API)",
   "main": "index.js",
